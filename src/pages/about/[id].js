@@ -33,7 +33,8 @@ export async function getStaticProps({ params }) {
         description: data.body || "Fallback description",
         keywords: "Next.js, SEO, React", // Customize or derive keywords from data
         author: "API Author", // Customize or derive author from data
-        ogImage: "https://manage-stage.uolo.co/icons/uoloIcon.svg", // Replace with dynamic data if available
+        ogImage:
+          "https://yt3.googleusercontent.com/ht1hTptOqHoqiMB6wimK9DRIBpNejFl9tGLIUcWBgIgfYqHfVkByLCWShcrE7zRVwGm-6RAa=s900-c-k-c0x00ffffff-no-rj", // Replace with dynamic data if available
         ogUrl: `https://yourwebsite.com/about/${params.id}`, // Dynamic URL based on ID
       },
     },

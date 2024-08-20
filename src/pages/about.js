@@ -1,36 +1,26 @@
 import Head from "next/head";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const About = () => {
-  const [metaData, setMetaData] = useState({
-    title: "Default Title",
-    description: "Default description",
-    keywords: "Default keywords",
-    author: "Default author",
-    ogImage: "https://yourwebsite.com/default-image.jpg", // Default OG image URL
-    ogUrl: "https://yourwebsite.com/about", // Default OG URL
-  });
+export async function getStaticProps() {
+  // Fetch the JSON data at build time
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts/1"); // Replace with your actual API
+  const data = await response.json();
 
-  useEffect(() => {
-    // Fetch the JSON data
-    fetch("https://jsonplaceholder.typicode.com/posts/1") // Replace this with your actual JSON URL
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the metadata state with the fetched data
-        setMetaData({
-          title: data.title || "Fallback Title",
-          description: data.body || "Fallback description",
-          keywords: "Next.js, SEO, React", // Customize or derive keywords from data
-          author: "API Author", // Customize or derive author from data
-          ogImage: "https://yourwebsite.com/images/about-us.jpg", // Replace with dynamic data if available
-          ogUrl: "https://yourwebsite.com/about", // Replace with dynamic URL if available
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+  return {
+    props: {
+      metaData: {
+        title: data.title || "Fallback Title",
+        description: data.body || "Fallback description",
+        keywords: "Next.js, SEO, React", // Customize or derive keywords from data
+        author: "API Author", // Customize or derive author from data
+        ogImage: "https://yourwebsite.com/images/about-us.jpg", // Replace with dynamic data if available
+        ogUrl: "https://yourwebsite.com/about", // Replace with dynamic URL if available
+      },
+    },
+  };
+}
 
+const About = ({ metaData }) => {
   return (
     <>
       <Head>

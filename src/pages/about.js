@@ -1,43 +1,22 @@
 import Head from "next/head";
 import React from "react";
 
-export async function getStaticProps() {
-  // Fetch the JSON data at build time
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts/1"); // Replace with your actual API
-  const data = await response.json();
-
-  return {
-    props: {
-      metaData: {
-        title: data.title || "Fallback Title",
-        description: data.body || "Fallback description",
-        keywords: "Next.js, SEO, React", // Customize or derive keywords from data
-        author: "API Author", // Customize or derive author from data
-        ogImage: "https://yourwebsite.com/images/about-us.jpg", // Replace with dynamic data if available
-        ogUrl: "https://yourwebsite.com/about", // Replace with dynamic URL if available
-      },
-    },
-  };
-}
-
-const About = ({ metaData }) => {
+const About = ({ params }) => {
+  const { id } = useParams();
   return (
     <>
       <Head>
-        <title>{metaData.title}</title>
-        <meta name="description" content={metaData.description} />
-        <meta name="keywords" content={metaData.keywords} />
-        <meta name="author" content={metaData.author} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Hello</title>
+        <meta name="description" content="Hello 123" />
 
-        {/* Open Graph tags */}
-        <meta property="og:title" content={metaData.title} />
-        <meta property="og:description" content={metaData.description} />
-        <meta property="og:image" content={metaData.ogImage} />
-        <meta property="og:url" content={metaData.ogUrl} />
-        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Hello" />
+        <meta property="og:description" content="Hello 123" />
+        <meta
+          property="og:image"
+          content="https://cdn.blume.vc/blume/media/images/startups/uolo/logo/uolo-logo-purple.f1670267324.jpeg"
+        />
       </Head>
-      <div>About</div>
+      <div>About Us {id}</div>
     </>
   );
 };

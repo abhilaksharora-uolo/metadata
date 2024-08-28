@@ -2,8 +2,7 @@ import Head from "next/head";
 import { useParams } from "next/navigation";
 import React from "react";
 
-const About = ({ params }) => {
-  const { id } = useParams();
+const About = () => {
   return (
     <>
       <Head>
@@ -17,7 +16,7 @@ const About = ({ params }) => {
           content="https://cdn.blume.vc/blume/media/images/startups/uolo/logo/uolo-logo-purple.f1670267324.jpeg"
         />
       </Head>
-      <div>About Us {id}</div>
+      <div>About Us</div>
     </>
   );
 };

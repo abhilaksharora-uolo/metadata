@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useParams } from "next/navigation";
 import React from "react";
 
 const About = ({ params }) => {
